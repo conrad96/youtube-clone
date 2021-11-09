@@ -11,10 +11,16 @@ class Search extends React.Component{
         this.setState({term: evt.target.value});        
     }
 
+    onFormSubmit = evt => {
+        evt.preventDefault();
+        
+        this.props.onFormSubmit(this.state.term);
+    }
+
     render(){
         return(
             <div className="search-field">
-                <form className="search-form">
+                <form className="search-form" onSubmit={this.onFormSubmit} >
                     <input type="text" onChange={evt=> this.searchField(evt) } className="form-control" id="search" placeholder="Search" value={this.state.term} />
                 </form>                
             </div>
