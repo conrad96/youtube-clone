@@ -2,11 +2,20 @@ import React from 'react';
 import './Search.css';
 
 class Search extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {term: ''}
+    }
+
+    searchField = evt => {
+        this.setState({term: evt.target.value});        
+    }
+
     render(){
         return(
             <div className="search-field">
                 <form className="search-form">
-                    <input type="text" className="form-control" id="search" placeholder="Search" />
+                    <input type="text" onChange={evt=> this.searchField(evt) } className="form-control" id="search" placeholder="Search" value={this.state.term} />
                 </form>                
             </div>
         );
