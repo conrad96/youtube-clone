@@ -5,13 +5,18 @@ import './VideoItem.css'
 
 class VideoItem extends React.Component{
 
-    dateFormat = date => {
-        TimeAgo.addDefaultLocale(en)
-        
-        // Create formatter (English).
-        const timeAgo = new TimeAgo('en-US')        
+    constructor(props){
+        super(props)
 
-        return timeAgo.format(date)
+        TimeAgo.addDefaultLocale(en)        
+    }
+
+    dateFormat = date => {                        
+        const timeAgo = new TimeAgo('en-US')
+
+        const dateObj = new Date(date);
+
+        return timeAgo.format(dateObj)
     }
 
     render(){
