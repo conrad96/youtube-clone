@@ -1,3 +1,23 @@
 .row-video-item{
     margin-bottom: 25px;
 }
+
+.video-channel{
+    
+}
+
+.video-description{
+     
+}
+
+.video-item-detail, .video-detail {
+    font-size: 13px;
+    color: gray;
+}
+
+.flex-container{
+    display: flex;    
+    align-content: space-between;
+    color: gray;
+    font-size: 13px;
+}
