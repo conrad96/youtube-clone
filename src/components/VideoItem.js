@@ -8,7 +8,7 @@ class VideoItem extends React.Component{
     constructor(props){
         super(props)
 
-        TimeAgo.addDefaultLocale(en)        
+        TimeAgo.addLocale(en)        
     }
 
     dateFormat = date => {                        
@@ -27,7 +27,7 @@ class VideoItem extends React.Component{
         return(
             <div className="row row-video-item">
                 <div className="col-md-4">
-                    <img src={snippets.thumbnails.medium.url} />
+                    <img src={snippets.thumbnails.medium.url} alt={snippets.description} />
                 </div>
                 <div className="col-md-8">                    
                     <div className="video-title">
