@@ -3,6 +3,7 @@ import Search from './components/Search';
 import Youtube from './api/Youtube';
 import VideoList from './components/VideoList';
 import './App.css'
+import Logo from './assets/YouTube-Logo.png'
 
 class App extends React.Component{
     constructor(props){
@@ -21,15 +22,25 @@ class App extends React.Component{
     }
 
     render(){
-        return(
-            <div className="container">
-                <Search onFormSubmit={this.onTermSubmit} />
-                <div className="search-results-counter">
-                    {this.state.videos.length} results
-                </div>
-                <div className="video-list">
-                    <VideoList videos={this.state.videos} />
-                </div>                
+        return(            
+            <div>
+                <div className="header">
+                    <div className="row">
+                        <div className="col-md-2">
+                            <img src={Logo} alt="Logo" className="logo-youtube" />
+                        </div>
+                        <div className="col-md-10">
+                            <Search onFormSubmit={this.onTermSubmit} /> 
+                        </div>
+                    </div>
+                    
+                </div>       
+                <hr />
+                <div className="container">
+                    <div className="video-list">
+                        <VideoList videos={this.state.videos} />
+                    </div>  
+                </div>                             
             </div>          
         );
     }
