@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './components/Search';
 import Youtube from './api/Youtube';
+import VideoList from './components/VideoList';
 import './App.css'
 
 class App extends React.Component{
@@ -25,6 +26,9 @@ class App extends React.Component{
                 <Search onFormSubmit={this.onTermSubmit} />
                 <div className="search-results-counter">
                     {this.state.videos.length} results
+                </div>
+                <div className="video-list">
+                    <VideoList videos={this.state.videos} />
                 </div>                
             </div>          
         );
