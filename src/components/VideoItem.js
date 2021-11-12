@@ -1,4 +1,5 @@
 import React from 'react'
+import Youtube from '../api/Youtube'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import './VideoItem.css'
@@ -8,7 +9,9 @@ class VideoItem extends React.Component{
     constructor(props){
         super(props)
 
-        TimeAgo.addLocale(en)        
+        TimeAgo.addLocale(en) 
+        
+        this.state = {views: 0}
     }
 
     dateFormat = date => {                        
@@ -19,10 +22,29 @@ class VideoItem extends React.Component{
         return timeAgo.format(dateObj)
     }
 
+    getVideoStatistics = async videoId => {
+
+        const results = await Youtube.get('/videos',  {
+            params: {
+                id: videoId,
+                part: 'statistics'
+            }
+        });
+                
+        const items = results.data.items;
+        
+        const views = items.map(item => {            
+            return item.statistics.viewCount;
+        });        
+
+        this.setState({views: views});
+    }
+
     render(){
         const video = this.props.video;
         const snippets = video.snippet;
         const videoSrc = `https://youtube.com/embed/${video.id.videoId}`;
+        this.getVideoStatistics(video.id.videoId);
 
         return(
             <div className="row row-video-item">
@@ -35,7 +57,7 @@ class VideoItem extends React.Component{
                     </div>                    
                     
                     <div className="flex-container">
-                        <div className="video-views">0 views</div>
+                        <div className="video-views">{this.state.views} views </div>
                         <div>&nbsp;.&nbsp;</div>
                         <div className="video-date">{this.dateFormat(snippets.publishTime)}</div>
                     </div>
