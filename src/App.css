@@ -9,3 +9,11 @@
     width: 120px;
     height: 60px;
 }
+
+.header{
+    background-color: rgb(247, 244, 244);
+}
+
+.video-list{
+    margin-top: 8px;
+}
