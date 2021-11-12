@@ -27,7 +27,7 @@ class App extends React.Component{
                 <div className="header">
                     <div className="row">
                         <div className="col-md-2">
-                            <img src={Logo} alt="Logo" className="logo-youtube" />
+                            <a href="/"><img src={Logo} alt="Logo" className="logo-youtube" /></a>
                         </div>
                         <div className="col-md-10">
                             <Search onFormSubmit={this.onTermSubmit} /> 
@@ -35,7 +35,7 @@ class App extends React.Component{
                     </div>
                     
                 </div>       
-                <hr />
+                
                 <div className="container">
                     <div className="video-list">
                         <VideoList videos={this.state.videos} />
