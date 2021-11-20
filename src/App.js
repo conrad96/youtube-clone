@@ -8,7 +8,7 @@ import Logo from './assets/YouTube-Logo.png'
 class App extends React.Component{
     constructor(props){
         super(props);
-        this.state = {videos: []}
+        this.state = {videos: [], selectedVideo: null}
     }  
 
     onTermSubmit = async term =>{
@@ -19,6 +19,10 @@ class App extends React.Component{
         })
 
         this.setState({videos: response.data.items})
+    }
+
+    onVideoSelected = (video) => {
+        this.setState({selectedVideo: video});
     }
 
     render(){
@@ -38,7 +42,7 @@ class App extends React.Component{
                 
                 <div className="container">
                     <div className="video-list">
-                        <VideoList videos={this.state.videos} />
+                        <VideoList videos={this.state.videos} onVideoSelected={this.onVideoSelected} />
                     </div>  
                 </div>                             
             </div>          

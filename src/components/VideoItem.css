@@ -1,5 +1,6 @@
 .row-video-item{
     margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .video-channel{

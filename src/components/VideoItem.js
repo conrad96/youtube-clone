@@ -24,30 +24,29 @@ class VideoItem extends React.Component{
 
     getVideoStatistics = async videoId => {
 
-        const results = await Youtube.get('/videos',  {
-            params: {
-                id: videoId,
-                part: 'statistics'
-            }
-        });
+        // const results = await Youtube.get('/videos',  {
+        //     params: {
+        //         id: videoId,
+        //         part: 'statistics'
+        //     }
+        // });
                 
-        const items = results.data.items;
+        // const items = results.data.items;
         
-        const views = items.map(item => {            
-            return item.statistics.viewCount;
-        });        
+        // const views = items.map(item => {            
+        //     return item.statistics.viewCount;
+        // });        
 
-        this.setState({views: views});
-    }
+        // this.setState({views: views});
+    }    
 
     render(){
         const video = this.props.video;
-        const snippets = video.snippet;
-        const videoSrc = `https://youtube.com/embed/${video.id.videoId}`;
+        const snippets = video.snippet;        
         this.getVideoStatistics(video.id.videoId);
 
         return(
-            <div className="row row-video-item">
+            <div onClick={() => this.props.onVideoSelect(video)} className="row row-video-item">
                 <div className="col-md-4">
                     <img src={snippets.thumbnails.medium.url} alt={snippets.description} />
                 </div>
